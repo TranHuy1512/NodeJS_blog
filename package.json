@@ -11,19 +11,19 @@
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
-        "husky": {
+    "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+           "pre-commit": "lint-staged"
     }
   },
   "author": "Huychodien",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^4.21.1",
-            "express-handlebars": "^8.0.1"
+  "express": "^4.21.1",
+  "express-handlebars": "^8.0.1"
   },
-  "devDependencies": {
+  "devDependencies": { 
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "morgan": "^1.10.0",
