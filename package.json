@@ -21,7 +21,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
-              "express-handlebars": "^8.0.1"
+            "express-handlebars": "^8.0.1"
   },
   "devDependencies": {
     "husky": "^9.1.7",
