@@ -1,37 +1,42 @@
-const path = require('path');
-const express = require('express');
-const morgan = require('morgan');
-const { engine } = require('express-handlebars');
+const path = require("path");
+const express = require("express");
+const morgan = require("morgan");
+const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
+const route = require("./routes");
 
-const route = require('./routes');
+//Connect to Database
+const db = require("./config/db")
+db.connect();
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(
-    express.urlencoded({
-        extended: true,
-    }),
-);
+// Middleware
+// app.use(cors());
 app.use(express.json());
-
-//HTTP logger
-// app.use(morgan('combined'));
-
-//Template engine
-                app.engine(
-    'hbs',
-    engine({
-        extname: '.hbs',
-    }),
+app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
 );
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
-// console.log('PATH: ', path.join(__dirname,'resources/views'))
 
-//routes init
+// HTTP logger
+// app.use(morgan("combined"));
+
+// Template engine
+app.engine(
+  "hbs",
+  engine({
+    extname: ".hbs",
+  })
+);
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "resources/views"));
+
+// Khởi tạo routes
 route(app);
 
+// Lắng nghe cổng
 app.listen(port, () =>
-    console.log(`Example app listening at http://localhost:${port}`),
+  console.log(`Listening: http://localhost:${port}`)
 );
